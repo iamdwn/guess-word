@@ -1,27 +1,114 @@
+/* Đặt phông chữ và giao diện nền chính */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #4b79a1, #283e51);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container chính của trò chơi */
+.game-container {
     text-align: center;
-    margin-top: 50px;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 1s ease-in-out;
+    color: #f0f0f0;
 }
 
+/* Tiêu đề trò chơi */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #ffce54;
+}
+
+/* Hiển thị từ */
 .word-display {
-    font-size: 24px;
+    font-size: 32px;
     letter-spacing: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* Input cho chữ đoán */
 .input-guess {
-    font-size: 18px;
-    padding: 5px;
-    margin-right: 10px;
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #ffce54;
+    outline: none;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
 }
 
+.input-guess:focus {
+    border-color: #ffce54;
+}
+
+/* Nút đoán */
 .btn-guess {
+    padding: 15px 30px;
     font-size: 18px;
-    padding: 5px 10px;
+    font-weight: bold;
+    background-color: #ffce54;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 20px;
 }
 
+.btn-guess:hover {
+    background-color: #ffba34;
+    transform: translateY(-2px);
+}
+
+/* Hiển thị tin nhắn */
 .message-display {
+    font-size: 20px;
+    padding: 10px;
     margin-top: 20px;
-    font-size: 18px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.message-correct {
+    background-color: #27ae60;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.5);
+    opacity: 1;
+}
+
+.message-wrong {
+    background-color: #e74c3c;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
+    opacity: 1;
+}
+
+/* Hiệu ứng fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

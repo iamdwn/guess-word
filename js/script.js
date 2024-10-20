@@ -27,5 +27,6 @@ function guessLetter() {
         message.textContent = 'Chúc mừng, bạn đã đoán đúng từ!';
     }
 
+    // Xóa chữ trong input sau khi đoán
     document.getElementById('guessInput').value = '';
 }
