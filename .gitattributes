@@ -1,0 +1,13 @@
+# Đối với file JavaScript
+*.js text diff=javascript
+
+# Nếu bạn có các file ES6 hoặc React
+*.jsx text diff=javascript
+
+# Nếu bạn sử dụng TypeScript
+*.ts text diff=typescript
+*.tsx text diff=typescript
+
+# File nhị phân (nếu có)
+*.png binary
+*.jpg binary
