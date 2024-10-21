@@ -49,7 +49,6 @@ h1 {
     border-radius: 8px;
     border: 2px solid #ffce54;
     outline: none;
-    width: 60px;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
     margin-bottom: 20px;
@@ -62,8 +61,9 @@ h1 {
 
 /* Nút đoán */
 .btn-guess {
+    margin-left: 30px;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     background-color: #ffce54;
     border: none;
@@ -160,4 +160,17 @@ h1 {
 /* Lớp jump cho nhân vật */
 .jump {
     animation: jump 0.5s ease;
+}
+
+/* Container chính của trò chơi */
+.game-container {
+    text-align: center;
+    padding: 60px; /* Tăng khoảng cách padding để làm container lớn hơn */
+    border-radius: 20px; /* Làm tròn các góc hơn một chút */
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 600px; /* Tăng chiều rộng tối đa của container */
+    width: 100%;
+    animation: fadeIn 1s ease-in-out;
+    color: #f0f0f0;
 }
