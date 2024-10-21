@@ -1,13 +1,14 @@
 # Đối với file JavaScript
-*.js text diff=javascript
+*.js linguist-language=JavaScript
 
-# Nếu bạn có các file ES6 hoặc React
-*.jsx text diff=javascript
+# Đối với file TypeScript
+*.ts linguist-language=TypeScript
 
-# Nếu bạn sử dụng TypeScript
-*.ts text diff=typescript
-*.tsx text diff=typescript
+# Đối với file HTML
+*.html linguist-language=HTML
 
-# File nhị phân (nếu có)
-*.png binary
-*.jpg binary
+# Đối với file CSS
+*.css linguist-language=CSS
+
+# Đối với file JSON
+*.json linguist-language=JSON
