@@ -264,4 +264,53 @@ h1 {
     background-color: #283e51; /* Đổi màu khi hover */
 }
 
+/* Tạo kiểu cho tất cả các đám mây */
+/* Tạo kiểu cho tất cả các đám mây */
+.cloud {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7); /* Màu trắng với độ trong suốt 70% */
+    border-radius: 15px;
+    animation: moveCloud 12s linear infinite;
+    opacity: 0.8; /* Giảm độ sáng bằng cách giảm opacity */
+}
+
+/* Mỗi đám mây sẽ có kích thước và vị trí khác nhau */
+#cloud1 {
+    width: 120px;
+    height: 30px;
+    top: 20%;
+    left: 100%;
+    animation-duration: 15s;
+}
+
+#cloud2 {
+    width: 150px;
+    height: 40px;
+    top: 40%;
+    left: 100%;
+    animation-duration: 20s;
+}
+
+#cloud3 {
+    width: 180px;
+    height: 50px;
+    top: 60%;
+    left: 100%;
+    animation-duration: 10s;
+}
+
+/* Keyframe để di chuyển đám mây từ phải sang trái */
+@keyframes moveCloud {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -200px;
+    }
+}
+
+body {
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+}
+
 
