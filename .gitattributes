@@ -5,7 +5,7 @@
 *.ts linguist-language=TypeScript
 
 # Đối với file HTML
-*.html linguist-language=JavaScript
+*.html linguist-language=HTML
 
 # Đối với file CSS
 *.css linguist-language=JavaScript
