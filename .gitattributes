@@ -5,10 +5,10 @@
 *.ts linguist-language=TypeScript
 
 # Đối với file HTML
-*.html linguist-language=HTML
+*.html linguist-language=JavaScript
 
 # Đối với file CSS
-*.css linguist-language=CSS
+*.css linguist-language=JavaScript
 
 # Đối với file JSON
 *.json linguist-language=JSON
