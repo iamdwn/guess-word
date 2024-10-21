@@ -1,61 +1,100 @@
-let hiddenWord = "tichluytuban"; // Từ ẩn
+let hiddenWord = "TICHLUYTUBAN";
 let displayWord = "_".repeat(hiddenWord.length).split('');
 
-// Hiển thị từ ẩn với các ký tự "_"
 document.getElementById('hiddenWord').textContent = displayWord.join(' ');
 
-// Hàm xử lý khi đoán chữ
-function guessLetter() {
-    let guess = document.getElementById('guessInput').value.toLowerCase();
-    let message = document.getElementById('message');
-    let found = false;
+guessInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        guessLetter();
+    }
+});
 
-    // Kiểm tra xem chữ đoán có trong từ không
+function guessLetter() {
+    let guess = document.getElementById('guessInput').value.toUpperCase();
+    let found = false;
+    let correctCount = 0;
+
     for (let i = 0; i < hiddenWord.length; i++) {
         if (hiddenWord[i] === guess) {
             displayWord[i] = guess;
             found = true;
+            correctCount++;
         }
     }
 
-    // Cập nhật từ hiển thị
     document.getElementById('hiddenWord').textContent = displayWord.join(' ');
 
-    // Nếu đoán đúng
+
+
     if (found) {
-        onCorrectGuess(); // Gọi hàm nhảy nếu đoán đúng
-        message.textContent = `Chữ "${guess}" đúng!`;
+        onCorrectGuess();
+        showToast(`Có ${correctCount} chữ ${guess}`, 'correct');
+        correctCount = 0;
     } else {
-        message.textContent = `Chữ "${guess}" không có trong từ.`;
+        showToast(`Không có chữ ${guess}`, 'wrong');
     }
 
-    // Nếu đoán hết tất cả các chữ trong từ
     if (!displayWord.includes('_')) {
-        message.textContent = 'Chúc mừng, bạn đã đoán đúng từ!';
+        showPopup('TÍCH LUỸ TƯ BẢN');
     }
 
-    // Xóa chữ trong input sau khi đoán
     document.getElementById('guessInput').value = '';
 }
 
-// Nhân vật và chướng ngại vật
+function showToast(message, type) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+
+    toast.className = 'toast show';
+    if (type === 'correct') {
+        toast.classList.add('toast-correct');
+    } else {
+        toast.classList.add('toast-wrong');
+    }
+
+    setTimeout(function() {
+        toast.className = toast.className.replace('show', '');
+    }, 3000);
+}
+
 const character = document.getElementById('character');
 const obstacle = document.getElementById('obstacle');
 
-// Hàm nhảy cho nhân vật
 function jump() {
-    // Nếu nhân vật chưa có lớp jump thì thêm vào
     if (!character.classList.contains('jump')) {
         character.classList.add('jump');
 
-        // Xóa lớp jump sau 500ms (thời gian nhảy)
         setTimeout(function() {
             character.classList.remove('jump');
         }, 500);
     }
 }
 
-// Gọi hàm nhảy khi đoán đúng
 function onCorrectGuess() {
-    jump();
+    // jump();
 }
+
+function checkCollision() {
+    const characterRect = character.getBoundingClientRect(); 
+    const obstacleRect = obstacle.getBoundingClientRect();  
+
+    const obstacleLeft = obstacleRect.left;
+    const characterRight = characterRect.right;
+
+
+    if (obstacleLeft - characterRight < 100 && obstacleLeft - characterRight > 0) {
+        jump();
+    }
+}
+
+setInterval(checkCollision,40);
+
+function showPopup(message) {
+    document.getElementById('popup-message').textContent = message;
+    document.getElementById('popup').classList.remove('hidden');
+}
+
+function closePopup() {
+    document.getElementById('popup').classList.add('hidden');
+}
+

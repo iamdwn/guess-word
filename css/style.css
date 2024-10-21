@@ -1,4 +1,3 @@
-/* Đặt phông chữ và giao diện nền chính */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #4b79a1, #283e51);
@@ -10,7 +9,6 @@ body {
     margin: 0;
 }
 
-/* Container chính của trò chơi */
 .game-container {
     text-align: center;
     padding: 40px;
@@ -23,7 +21,6 @@ body {
     color: #f0f0f0;
 }
 
-/* Tiêu đề trò chơi */
 h1 {
     font-size: 36px;
     font-weight: bold;
@@ -32,7 +29,6 @@ h1 {
     color: #ffce54;
 }
 
-/* Hiển thị từ */
 .word-display {
     font-size: 32px;
     letter-spacing: 10px;
@@ -41,7 +37,6 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* Input cho chữ đoán */
 .input-guess {
     padding: 15px;
     font-size: 22px;
@@ -59,7 +54,6 @@ h1 {
     border-color: #ffce54;
 }
 
-/* Nút đoán */
 .btn-guess {
     margin-left: 30px;
     padding: 15px 30px;
@@ -79,29 +73,6 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* Hiển thị tin nhắn */
-.message-display {
-    font-size: 20px;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.message-correct {
-    background-color: #27ae60;
-    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.5);
-    opacity: 1;
-}
-
-.message-wrong {
-    background-color: #e74c3c;
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
-    opacity: 1;
-}
-
-/* Hiệu ứng fade-in */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -113,17 +84,16 @@ h1 {
     }
 }
 
-/* Nhân vật */
 #character {
     width: 50px;
     height: 50px;
+    /* background-image: url('../img/15-20-44-805_512.webp');  */
     background-color: red;
     position: absolute;
     bottom: 0;
     left: 50px;
 }
 
-/* Chướng ngại vật */
 #obstacle {
     width: 30px;
     height: 50px;
@@ -134,7 +104,6 @@ h1 {
     animation: moveObstacle 2s linear infinite;
 }
 
-/* Hoạt ảnh chướng ngại vật di chuyển */
 @keyframes moveObstacle {
     0% {
         right: 0;
@@ -144,7 +113,6 @@ h1 {
     }
 }
 
-/* Hoạt ảnh nhảy của nhân vật */
 @keyframes jump {
     0% {
         bottom: 0;
@@ -157,20 +125,143 @@ h1 {
     }
 }
 
-/* Lớp jump cho nhân vật */
 .jump {
     animation: jump 0.5s ease;
 }
 
-/* Container chính của trò chơi */
 .game-container {
     text-align: center;
-    padding: 60px; /* Tăng khoảng cách padding để làm container lớn hơn */
-    border-radius: 20px; /* Làm tròn các góc hơn một chút */
+    padding: 60px;
+    border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    max-width: 600px; /* Tăng chiều rộng tối đa của container */
+    max-width: 600px;
     width: 100%;
     animation: fadeIn 1s ease-in-out;
     color: #f0f0f0;
 }
+
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    font-size: 17px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease, bottom 0.5s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    top: 50px; 
+}
+
+.toast-correct {
+    background-color: #27ae60;
+}
+
+.toast-wrong {
+    background-color: #e74c3c;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.popup-content {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 12px; 
+    text-align: center;
+    color: #333; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    animation: fadeIn 0.3s;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Nội dung của cửa sổ pop-up */
+.popup-content {
+    background-color: #ffffff; /* Nền trắng */
+    padding: 30px; /* Tăng khoảng cách bên trong */
+    border-radius: 12px; /* Bo tròn góc */
+    text-align: center;
+    color: #333; /* Màu chữ */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+    animation: fadeIn 0.3s; /* Hiệu ứng fade-in */
+    font-family: 'Arial', sans-serif; /* Chọn phông chữ đẹp hơn */
+}
+
+/* Định dạng cho văn bản trong pop-up */
+#popup-message {
+    font-size: 24px; /* Kích thước chữ lớn hơn */
+    line-height: 1.5; /* Khoảng cách giữa các dòng */
+    margin-bottom: 20px; /* Khoảng cách giữa văn bản và nút */
+    color: #4b79a1; /* Màu chữ cho nội dung */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    animation: textEffect 0.5s ease-in-out; /* Hiệu ứng cho văn bản */
+}
+
+/* Hiệu ứng cho văn bản */
+@keyframes textEffect {
+    0% {
+        transform: scale(0.8); /* Bắt đầu nhỏ hơn */
+        opacity: 0; /* Bắt đầu mờ */
+    }
+    100% {
+        transform: scale(1); /* Kết thúc với kích thước bình thường */
+        opacity: 1; /* Kết thúc với độ mờ bình thường */
+    }
+}
+
+/* Định dạng cho nút trong pop-up */
+.popup-content button {
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    background-color: #ffce54; /* Màu nền nút */
+    color: #333; /* Màu chữ */
+    border: none; /* Xóa đường viền */
+    border-radius: 5px; /* Bo tròn góc nút */
+    cursor: pointer; /* Đổi con trỏ khi di chuột qua */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+/* Hiệu ứng khi hover vào nút */
+.popup-content button:hover {
+    background-color: #283e51; /* Đổi màu khi hover */
+}
+
+

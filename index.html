@@ -12,11 +12,20 @@
         <div id="hiddenWord" class="word-display"></div>
         <input type="text" id="guessInput" class="input-guess" maxlength="1" placeholder="Nhập một chữ cái">
         <button class="btn-guess" onclick="guessLetter()">Đoán</button>
-        <div id="message" class="message-display"></div>
+        <div id="toast" class="toast"></div>
+
         <div id="character"></div>
         <div id="obstacle"></div>
     </div>
  
+    <div id="popup" class="popup hidden" onclick="closePopup(event)">
+        <div class="popup-content" onclick="event.stopPropagation();">
+            <span id="popup-message"></span>
+            <!-- <button onclick="closePopup()">Đóng</button> -->
+        </div>
+    </div>
+    
+    
     <script src="js/script.js"></script>
 </body>
 </html>
